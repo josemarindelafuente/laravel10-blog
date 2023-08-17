@@ -4,13 +4,23 @@
 
 @section('content')
 
-<h1>curso: {{ $curso->name_curso }} </h1>
-<div>{{ $curso->categoria }}</div>
+<h1>Curso <b>"{{ $curso->name_curso }}"</b></h1>
 
-<p><a href="{{ route('cursos') }}"> Volver </a></p>
+<div>
+    <span class="badge text-bg-success">Categoría: {{ $curso->categoria }}</span>
+</div>
+
+<hr>
 
 <p>
+    <b>Detalles del curso:</b><br>
     {{ $curso->description_curso }}
 </p>
-    
+
+<hr>
+
+<a href="{{ route('cursos') }}"> 
+<button type="button" class="btn btn-outline-primary"> << Volver </button>
+</a>
+
 @endsection

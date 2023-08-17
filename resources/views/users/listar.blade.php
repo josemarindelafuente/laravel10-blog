@@ -13,7 +13,7 @@
 
 <div class="row">
     @foreach ($usuarios as $user)
-        <div class="col-4 mt-2">
+        <div class="col-6 mt-2">
             <a href="">
                 <b>{{ $user->name }}</b> | {{$user->email }} 
             </a>            

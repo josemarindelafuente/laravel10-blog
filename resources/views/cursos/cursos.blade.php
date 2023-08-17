@@ -4,7 +4,12 @@
 
 @section('content')
     
-    <h1>Lista de cursos de nuestra plataforma</h1>
+    <h1>Lista de cursos de nuestra plataforma
+        <a href="{{ route('curso.create') }}">
+             <button type="button" class="btn btn-primary">Agregar +</button>
+        </a>
+       
+    </h1>
     <h3> {{ $cursos->total() }} Cursos</h3>
 
   
@@ -15,7 +20,7 @@
     <div class="row">
         
             @foreach ($cursos as $curso)
-                <div class="col-4">
+                <div class="col-3">
                     <div class="card mt-4">
                         <div class="card-body">
                             <a href="{{ route('curos.show', $curso->id) }}">
