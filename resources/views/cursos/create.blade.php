@@ -6,7 +6,8 @@
 
 <h1>Crear curso</h1>
 
-<form>
+<form action="{{ route('cursos.store')}}" method="POST">
+    @csrf
     <div class="row">
         <div class="col-6">
             <div class="mb-3">
@@ -16,9 +17,9 @@
         </div>
         <div class="col-6">
             <div class="mb-3">
-                <label for="curso" class="form-label">Categoría</label>
-                <select class="form-select">
-                <option selected>ELija una categoria para el curso</option>
+                <label class="form-label">Categoría</label>
+                <select class="form-select" name="categoria">
+                <option selected Value="NULL">ELija una categoria para el curso</option>
                 <option value="1">Diseño Web</option>
                 <option value="2">Programación Web</option>
               </select>

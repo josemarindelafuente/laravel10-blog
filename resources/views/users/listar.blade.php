@@ -1,6 +1,6 @@
 @extends('layouts.plantilla_web')
 
-@section('name')
+@section('title', 'Lista de usuarios registrados')
 
 @section('content')
 

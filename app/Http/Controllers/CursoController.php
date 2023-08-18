@@ -10,7 +10,7 @@ class CursoController extends Controller
 {
     //
     public function index(){
-        $cursos = Curso::paginate(30);
+        $cursos = Curso::orderBy('id', 'desc')->paginate(28);
         return view('cursos.cursos', compact('cursos'));
     }
     
@@ -20,8 +20,6 @@ class CursoController extends Controller
     }
 
     public function show($id = NULL){
-
-
         if ($id == NULL){
             return "no ingreso un id";
         }else{
@@ -35,6 +33,24 @@ class CursoController extends Controller
                 return "curso no existente";
             }
         }
-        
+    }
+
+    public function store(Request $request){
+
+        //return $request->all();
+        $curso = new Curso;
+        $curso->name_curso = $request->curso;
+        $curso->description_curso = $request->descripcion;
+        $curso->categoria = $request->categoria;
+
+        //return $curso;
+        $curso->save();
+        //echo "listo....";
+
+        //return redirect()->route('curos.show', $curso->id);
+        return redirect()->route('curos.show', $curso); // si pongo la instancia del curso
+        // laravel entiende que tiene que usar su ID
+
+
     }
 }
