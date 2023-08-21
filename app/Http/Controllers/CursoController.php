@@ -50,7 +50,12 @@ class CursoController extends Controller
         //return redirect()->route('curos.show', $curso->id);
         return redirect()->route('curos.show', $curso); // si pongo la instancia del curso
         // laravel entiende que tiene que usar su ID
+    }
 
+    public function edit($id){
+
+        return $curso = Curso::find($id);
+        //return view('cursos.edit', compact('curso'));
 
     }
 }

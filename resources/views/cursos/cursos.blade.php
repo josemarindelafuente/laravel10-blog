@@ -23,7 +23,7 @@
                 <div class="col-3">
                     <div class="card mt-4">
                         <div class="card-body">
-                            <a href="{{ route('curos.show', $curso->id) }}">
+                            <a href="{{ route('cursos.show', $curso->id) }}">
                                 {{ $curso->name_curso }}
                             </a>                            
                         </div>
