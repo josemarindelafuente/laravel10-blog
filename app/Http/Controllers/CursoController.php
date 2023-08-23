@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Curso;
 use Illuminate\View\ViewName;
+use App\Http\Requests\StoreCursoRequest; // validaciones para el formulario store
 
 class CursoController extends Controller
 {
@@ -35,13 +36,20 @@ class CursoController extends Controller
         }
     }
 
-    public function store(Request $request){
+    public function store(StoreCursoRequest $request){
+
+        /*
+        //estas validaciones las vamos a hacer de otra manera, usando un form request
+        // estas validaciones las copiamos y las pegamos en el archivo del form request que creamos
+        // en este caso es : StoreCursoRequest
 
         $request->validate([
          'curso' => 'required',
          'categoria' => 'required',
          'descripcion' => 'required'
         ]);
+        */
+
 
         //return $request->all();
         $curso = new Curso;
