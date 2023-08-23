@@ -7,7 +7,7 @@
 <h1>Curso <b>"{{ $curso->name_curso }}"</b></h1>
 
 <div>
-    <span class="badge text-bg-success">Categoría: {{ $curso->categoria }}</span> | <a href="{{route('cursos.editar', $curso->id)}}">[Editar Cruso]</a>
+    <span class="badge text-bg-success">Categoría: {{ $curso->categoria }}</span> | <a href="{{route('cursos.editar', $curso->id)}}">[Editar Curso]</a>
 </div>
 
 <hr>

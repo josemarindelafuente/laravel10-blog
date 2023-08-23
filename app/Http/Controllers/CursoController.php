@@ -37,6 +37,12 @@ class CursoController extends Controller
 
     public function store(Request $request){
 
+        $request->validate([
+         'curso' => 'required',
+         'categoria' => 'required',
+         'descripcion' => 'required'
+        ]);
+
         //return $request->all();
         $curso = new Curso;
         $curso->name_curso = $request->curso;
@@ -48,14 +54,39 @@ class CursoController extends Controller
         //echo "listo....";
 
         //return redirect()->route('curos.show', $curso->id);
-        return redirect()->route('curos.show', $curso); // si pongo la instancia del curso
+        return redirect()->route('cursos.show', $curso); // si pongo la instancia del curso
         // laravel entiende que tiene que usar su ID
     }
 
-    public function edit($id){
+    /*public function edit($id){
+        $curso = Curso::find($id);
+        return view('cursos.edit', compact('curso'));
+    }*/
 
-        return $curso = Curso::find($id);
-        //return view('cursos.edit', compact('curso'));
+    public function edit(Curso $curso){
+        //return $curso;
+        return view('cursos.edit', compact('curso'));
+    }
 
+    public function update(Request $request ,Curso $curso){
+        //return $curso->categoria;
+        //return $request->all();
+
+        //validacion del formulario
+        $request->validate([
+            'curso' => 'required|min:3|max:100',
+            'categoria' => 'required',
+            'descripcion' => 'required'
+           ]);
+
+        $curso->name_curso = $request->curso;
+        $curso->description_curso = $request->descripcion;
+        $curso->categoria = $request->categoria;
+
+        $curso->save();
+
+        //return redirect()->route('curos.show', $curso->id);
+        return redirect()->route('cursos.show', $curso); // si pongo la instancia del curso
+        // laravel entiende que tiene que usar su ID
     }
 }
