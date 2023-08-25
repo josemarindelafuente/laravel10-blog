@@ -23,4 +23,13 @@
 <button type="button" class="btn btn-outline-primary"> << Volver </button>
 </a>
 
+<br><br>
+
+<form action="{{ route('cursos.destroy', $curso )}}" method="POST">
+    @method('delete')
+    @csrf
+    <button type="submit" class="btn btn-outline-danger"> Eliminar este curso </button>
+</form>
+
+
 @endsection

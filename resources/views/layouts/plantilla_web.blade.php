@@ -16,6 +16,11 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+            
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
@@ -29,10 +34,29 @@
               <li class="nav-item">
                 <a class="nav-link" href=" {{ route('usuarios') }} ">Usuarios</a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href=" {{ route('usuarios') }} ">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href=" {{ route('usuarios') }} ">Register</a>
+              </li>
+
             </ul>
+
+
+          
+
+     
+            
+      
           </div>
         </div>
       </nav>
+
+
+
+
 
     <div class="container mt-4">
         @yield('content')

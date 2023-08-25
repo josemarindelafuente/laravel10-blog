@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Curso;
 use Illuminate\View\ViewName;
 use App\Http\Requests\StoreCursoRequest; // validaciones para el formulario store
+use Illuminate\Support\Str;
 
 class CursoController extends Controller
 {
@@ -20,20 +21,19 @@ class CursoController extends Controller
 
     }
 
-    public function show($id = NULL){
-        if ($id == NULL){
-            return "no ingreso un id";
-        }else{
+    public function show($slug = NULL){
 
-            //$curso = Curso::where('id', $id)->first(); 
-            $curso = Curso::find($id);
+            $curso = Curso::where('slug', $slug)->first(); 
+            //$curso = Curso::find($slug);
+            // no funciona el Find con slug?
+
 
             if ($curso) {
             return view('cursos.show', compact('curso'));
             } else {
                 return "curso no existente";
             }
-        }
+        
     }
 
     public function store(StoreCursoRequest $request){
@@ -52,14 +52,24 @@ class CursoController extends Controller
 
 
         //return $request->all();
-        $curso = new Curso;
-        $curso->name_curso = $request->curso;
-        $curso->description_curso = $request->descripcion;
-        $curso->categoria = $request->categoria;
+            
+                $curso = new Curso;
+                $curso->name_curso = $request->curso;
+                $curso->slug = Str::slug($request->curso);
+                $curso->description_curso = $request->descripcion;
+                $curso->categoria = $request->categoria;
 
-        //return $curso;
-        $curso->save();
-        //echo "listo....";
+                //return $curso;
+                $curso->save();
+                //echo "listo....";
+                
+        /*        
+        $curso = Curso::create([
+            'name' => $request->curso, 
+            'description_curso' => $request->descripcion,
+            'categoria' => $request->categoria
+        ]);
+        */
 
         //return redirect()->route('curos.show', $curso->id);
         return redirect()->route('cursos.show', $curso); // si pongo la instancia del curso
@@ -96,5 +106,11 @@ class CursoController extends Controller
         //return redirect()->route('curos.show', $curso->id);
         return redirect()->route('cursos.show', $curso); // si pongo la instancia del curso
         // laravel entiende que tiene que usar su ID
+    }
+
+
+    public function destroy(Curso $curso){
+        $curso->delete();
+        return redirect()->route('cursos');
     }
 }

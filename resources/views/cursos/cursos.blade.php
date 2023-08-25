@@ -23,9 +23,12 @@
                 <div class="col-3">
                     <div class="card mt-4">
                         <div class="card-body">
-                            <a href="{{ route('cursos.show', $curso->id) }}">
+                            <a href="{{ route('cursos.show', $curso->slug) }}">
                                 {{ $curso->name_curso }}
-                            </a>                            
+                            </a>  
+                            <br>
+                            <small style="font-size: 10px; color:brown;">slug link: {{ $curso->slug }}</small> 
+
                         </div>
                     </div>
                 </div>
