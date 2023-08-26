@@ -35,15 +35,33 @@
                 <a class="nav-link" href=" {{ route('usuarios') }} ">Usuarios</a>
               </li>
 
+              @guest
+
               <li class="nav-item">
-                <a class="nav-link" href=" {{ route('usuarios') }} ">Login</a>
+                <a class="nav-link" href=" {{ route('login') }} ">Login</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href=" {{ route('usuarios') }} ">Register</a>
               </li>
+                  
+              @endguest
 
+              
+
+              @auth
+              <li class="nav-item">
+                <a class="nav-link" href=" {{ route('logout') }} ">Salir</a> 
+              </li>
+
+              
+              @endauth
+              
             </ul>
 
+            @auth
+            <b>{{ Auth::user()->name }} </b>          
+            @endauth
+            
 
           
 
