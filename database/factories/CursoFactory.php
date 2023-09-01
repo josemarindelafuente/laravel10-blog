@@ -21,6 +21,7 @@ class CursoFactory extends Factory
 
         return [
             //
+            'id_categoria' => $this->faker->randomElement([1, 2]),
             'name_curso' => $name_curso,
             'slug' => Str::slug($name_curso, '-'),
             'description_curso' => fake()->paragraph(),

@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_categoria');//creo la clave foranea
             $table->string('name_curso');
             $table->string('slug');
             $table->string('categoria');
             $table->text('description_curso');
             $table->timestamps();
+
+            $table->foreign('id_categoria')->references('id_categoria_curso')->on('cursos_categorias');
         });
     }
 
