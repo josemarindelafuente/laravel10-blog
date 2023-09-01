@@ -19,7 +19,7 @@ class UserFactory extends Factory
     {
         $role_aleatorio = rand(1, 2);
         return [
-            'id_role' => $role_aleatorio,
+            'role_id' => $role_aleatorio,
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),

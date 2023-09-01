@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users_roles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user_role');
+            $table->unsignedBigInteger('id_user_role')->unique();
             $table->string('user_role');
         });
     }
