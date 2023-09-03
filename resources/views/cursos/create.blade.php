@@ -19,11 +19,16 @@
         </div>
         <div class="col-6">
             <div class="mb-3">
-                <label class="form-label">Categoría</label>
+                <label class="form-label">Categorías traidas de la BD</label>
                 <select class="form-select" name="categoria">
-                <option selected Value="NULL">ELija una categoria para el curso</option>
-                <option value="1">Diseño Web</option>
-                <option value="2">Programación Web</option>
+
+                    @foreach ($categorias as $categoria)                     
+                    <option
+                    value={{ $categoria->id_categoria_curso }}>
+                    {{ $categoria->categoria_nombre }}
+                    </option>
+                    @endforeach   
+
               </select>
               @error('categoria') <span class="text-danger"> *{{ $message }} </span>@enderror
             </div>
@@ -40,6 +45,9 @@
     </div>
 
     <br>
+
+    
+
 
     <button type="submit" class="btn btn-primary">Crear Curso</button>
 </form>

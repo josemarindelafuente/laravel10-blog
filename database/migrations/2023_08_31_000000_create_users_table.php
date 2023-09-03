@@ -25,9 +25,9 @@ return new class extends Migration
             $table->foreign('role_id')->references('id_user_role')->on('users_roles');
             //conecto la foranea
             //id_user_role en la otra tabla debe ser unique para poder vincularlo
+            //https://youtu.be/YRh7sYrxxM8?list=PLZ2ovOgdI-kWWS9aq8mfUDkJRfYib-SvF&t=1175
+
             
-            
-            //$table->foreign('role_id')->references('id')->on('users_roles')->onDelete('cascade');
         });
     }
 

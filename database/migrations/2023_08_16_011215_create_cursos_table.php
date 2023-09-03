@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_categoria');//creo la clave foranea
-            $table->string('name_curso');
-            $table->string('slug');
+            $table->string('name_curso')->unique();
+            $table->string('slug')->unique();
             $table->string('categoria');
             $table->text('description_curso');
             $table->timestamps();

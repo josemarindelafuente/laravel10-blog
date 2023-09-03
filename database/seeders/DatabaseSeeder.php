@@ -41,6 +41,18 @@ class DatabaseSeeder extends Seeder
             'categoria_nombre' => 'Programación Web',
         ]);
 
+        DB::table('cursos_categorias')->insert([
+            'id_categoria_curso' => 3,
+            'categoria_nombre' => 'Inteligencia Artificial',
+        ]);
+
+        DB::table('cursos_categorias')->insert([
+            'id_categoria_curso' => 4,
+            'categoria_nombre' => 'Full Stack',
+        ]);
+
+
+
 
         DB::table('users')->insert([
             'role_id' => 1,

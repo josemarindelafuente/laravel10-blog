@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use App\Models\Cursos_categorias;
 use Illuminate\View\ViewName;
 use App\Http\Requests\StoreCursoRequest; // validaciones para el formulario store
 use Illuminate\Support\Str;
@@ -17,7 +18,8 @@ class CursoController extends Controller
     }
     
     public function create(){
-        return view('cursos.create');
+        $categorias = Cursos_categorias::All();        
+        return view('cursos.create', compact('categorias'));
 
     }
 
@@ -26,7 +28,6 @@ class CursoController extends Controller
             $curso = Curso::where('slug', $slug)->first(); 
             //$curso = Curso::find($slug);
             // no funciona el Find con slug?
-
 
             if ($curso) {
             return view('cursos.show', compact('curso'));
@@ -42,15 +43,12 @@ class CursoController extends Controller
         //estas validaciones las vamos a hacer de otra manera, usando un form request
         // estas validaciones las copiamos y las pegamos en el archivo del form request que creamos
         // en este caso es : StoreCursoRequest
-
         $request->validate([
          'curso' => 'required',
          'categoria' => 'required',
          'descripcion' => 'required'
         ]);
         */
-
-
         //return $request->all();
             
                 $curso = new Curso;
@@ -58,10 +56,10 @@ class CursoController extends Controller
                 $curso->slug = Str::slug($request->curso);
                 $curso->description_curso = $request->descripcion;
                 $curso->categoria = $request->categoria;
+                $curso->id_categoria = $request->categoria;
 
                 //return $curso;
                 $curso->save();
-                //echo "listo....";
                 
         /*        
         $curso = Curso::create([
